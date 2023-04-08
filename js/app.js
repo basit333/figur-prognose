@@ -34,14 +34,11 @@ let targetDate = null;
 const currentWeightTspanSvg = document.querySelector("#current-weight-tspan-svg");
 const targetWeightTspanSvg = document.querySelector("#target-weight-tspan-svg");
 const estimateDaysTspan = document.querySelector("#estimate-days-tspan");
-// const formSubmitBtn = document.querySelector("#form-submit-btn");
-// const formSection = document.querySelector("#form");
 const formElement = document.querySelector("#form-element");
 const currentWeightInput = document.querySelector("#current-weight");
 const targetWeightInput = document.querySelector("#target-weight");
 const heightInput = document.querySelector("#height");
 const ageInput = document.querySelector("#age");
-
 const resultSection = document.querySelector("#result");
 const targetWeightSpan = document.querySelector("#target-weight-span");
 const currentDateSpan = document.querySelector("#current-date-span");
@@ -51,21 +48,15 @@ const currentDateInChart = document.querySelector("#current-date-in-chart");
 const targetDateInChart = document.querySelector("#target-date-in-chart");
 const weightDifferencesSpan = document.querySelector("#weight-difference");
 const gummiesProductImg = document.querySelector(".gummies-product-img");
-
 const startWeight = document.querySelector("#start-weight");
 const endWeight = document.querySelector("#end-weight");
-
 const bodyUpdateTextToSpan = document.querySelector(".body__update--text-to span");
-
 const bodyProductAdMainprice = document.querySelector(".body__product-ad-mainprice");
-
 const gummiesProductTitle = document.querySelector("#gummies-product-title");
-
 const gummiesProductQunatity = document.querySelector("#gummies-product-qunatity");
-
 const gummiesProductDescription = document.querySelector("#gummies-product-description");
-
 const bodyProductAd = document.querySelector(".body__product-ad-p");
+const loader = document.querySelector(".loader");
 
 if (checkboxes) {
   checkboxes.forEach((checkbox) => {
@@ -164,9 +155,14 @@ function initResultSection() {
 if (formChooseSubmitBtn) {
   formChooseSubmitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    mainContainer.style.display = "none";
-    result.style.display = "block";
-    initResultSection();
+    loader.style.display = "block"; // show loader
+    mainContainer.style.display = "none"; // hide main content
+
+    setTimeout(() => {
+      loader.style.display = "none"; // hide loader
+      result.style.display = "block"; // show result
+      initResultSection();
+    }, 3000); // delay for 3 seconds
 
     if (weightDifferencesSpan.innerText < 8) {
       gummiesProductImg.setAttribute("src", "./img/package-1.png");
@@ -246,11 +242,7 @@ function handleSubmit(event) {
 
     currentDate = dayjs();
     targetDate = currentDate.add(estimatedDays, "day");
-    // estimatedDays = estimatedDays;
     estimateDaysTspan.textContent = estimatedDays;
-
-    // estimateDaysTspan.textContent = estimatedDays;
-    // bodyUpdateTextToSpan.textContent = estimatedDays;
 
     formDataContainer.style.display = "none";
     formChooseCotainer.style.display = "block";

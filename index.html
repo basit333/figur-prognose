@@ -19,7 +19,9 @@
         <div class="header__container--left-content">
           <div class="header__container--top-content">
             <div class="header__logo-box">
-              <img class="header__logo" src="./img/logo.svg" alt="logo">
+              <!-- <img class="header__logo" src="./img/logo.svg" alt="logo"> -->
+              <img class="header__logo" src="./img/figur-logo.webp" alt="logo">
+
             </div>
             <span class="header__badge">JETZT NEU!</span>
           </div>
@@ -234,61 +236,71 @@
 
               <div class="form__choose-cotainer">
                 <h2 class="form__choose-heading">Wie motiviert Sind Sie um Gewicht zu verlieren?</h2>
-                <div class="form__choose-btns">
-                  <div role="radiogroup" class="form__choose-btn">
-                    <input type="checkbox" class="motivated-btns" />
-                    <div>
-                      <span>
-                        Wenig
-                      </span>
+                <div class="form__choose--wrapper">
+                  <div class="form__choose-btns">
+                    <div role="radiogroup" class="form__choose-btn">
+                      <input type="checkbox" class="motivated-btns" />
+                      <div>
+                        <span>
+                          Wenig
+                        </span>
+                      </div>
+                    </div>
+                    <div role="radiogroup" class="form__choose-btn">
+                      <input type="checkbox" class="motivated-btns" />
+                      <div>
+                        <span>
+                          Mittel
+                        </span>
+                      </div>
+                    </div>
+                    <div role="radiogroup" class="form__choose-btn">
+                      <input type="checkbox" class="motivated-btns" />
+                      <div>
+                        <span>
+                          Sehr
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <div role="radiogroup" class="form__choose-btn">
-                    <input type="checkbox" class="motivated-btns" />
-                    <div>
-                      <span>
-                        Mittel
-                      </span>
-                    </div>
-                  </div>
-                  <div role="radiogroup" class="form__choose-btn">
-                    <input type="checkbox" class="motivated-btns" />
-                    <div>
-                      <span>
-                        Sehr
-                      </span>
-                    </div>
-                  </div>
+                  <p class="form__choose-error" id="motivated-error">
+                    <img class="img-important" src="./img/box-important.png" alt="important">
+                    Bitte wählen Sie eine Option
+                  </p>
                 </div>
-
                 <h2 class="form__choose-heading">Treiben Sie derzeit Sport?</h2>
-                <div class="form__choose-btns">
-                  <div role="radiogroup" class="form__choose-btn">
-                    <input type="checkbox" class="sports-btns" />
-                    <div>
-                      <span>
-                        Wenig
-                      </span>
+                <div class="form__choose--wrapper">
+                  <div class="form__choose-btns">
+                    <div role="radiogroup" class="form__choose-btn">
+                      <input type="checkbox" class="sports-btns" />
+                      <div>
+                        <span>
+                          Wenig
+                        </span>
+                      </div>
+                    </div>
+                    <div role="radiogroup" class="form__choose-btn">
+                      <input type="checkbox" class="sports-btns" />
+                      <div>
+                        <span>
+                          Mittel
+                        </span>
+                      </div>
+                    </div>
+                    <div role="radiogroup" class="form__choose-btn">
+                      <input type="checkbox" class="sports-btns" />
+                      <div>
+                        <span>
+                          Sehr
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <div role="radiogroup" class="form__choose-btn">
-                    <input type="checkbox" class="sports-btns" />
-                    <div>
-                      <span>
-                        Mittel
-                      </span>
-                    </div>
-                  </div>
-                  <div role="radiogroup" class="form__choose-btn">
-                    <input type="checkbox" class="sports-btns" />
-                    <div>
-                      <span>
-                        Sehr
-                      </span>
-                    </div>
-                  </div>
+                  <p class="form__choose-error" id="sport-error">
+                    <img class="img-important" src="./img/box-important.png" alt="important">
+                    Bitte wählen Sie eine Option
+                  </p>
                 </div>
-
                 <div class="form__choose--footer-btns">
                   <button class="form__choose--back-btn">Zurück</button>
                   <button class="form__choose--submit-btn">Prognose erstellen!</button>
@@ -299,6 +311,59 @@
         </div>
       </div>
     </section>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer-top">
+          <div class="contact-container">
+            <div class="footer__logo--box"><a href="#"><img class="footer__logo" src="./img/footer-logo.webp" /></a>
+            </div>
+            <p>
+              Diese Aussagen sind nicht von der Lebensmittel- und Arzneimittelbehörde geprüft worden. Dieses Produkt
+              ist nicht für die Verwendung durch oder den Verkauf an Personen unter 18 Jahren zugelassen. Sprechen
+              Sie vor der Einnahme dieses Produktes mit Ihrem Arzt, falls Sie schwanger sind oder stillen,
+              Medikamente einnehmen oder an einer Krankheit leiden. Nahrungsergänzungsmittel. Gewichtsverlust wird
+              im Rahmen einer gesunden, kalorienreduzierten Diät und eines Trainingsprogramms erreicht.
+            </p>
+          </div>
+          <div class="footer-menu-links">
+            <h3>
+              INFORMATION
+            </h3>
+            <ul>
+              <li class="normal">
+                <a href="#">
+                  Impressum & Kontakt
+                </a>
+              </li>
+              <li class="normal">
+                <a href="#">
+                  Allgemeine Geschäftsbedingungen
+                </a>
+              </li>
+              <li class="normal">
+                <a href="#">
+                  Datenschutz
+                </a>
+              </li>
+              <li class="normal">
+                <a href="#">
+                  Startseite
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="footer-bottom">
+          <div class="copy-rights">
+            <p>Copyright © 2023 Slimming Gummies - All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </main>
 
   <section class="body__updated--container" id="result">

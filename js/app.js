@@ -152,52 +152,17 @@ function initResultSection() {
   currentDateInChart.textContent = currentDate.format("DD MMMM YYYY");
 }
 
-if (formChooseSubmitBtn) {
-  formChooseSubmitBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    loader.style.display = "block"; // show loader
-    mainContainer.style.display = "none"; // hide main content
-
-    setTimeout(() => {
-      loader.style.display = "none"; // hide loader
-      result.style.display = "block"; // show result
-      initResultSection();
-    }, 3000); // delay for 3 seconds
-
-    if (weightDifferencesSpan.innerText < 8) {
-      gummiesProductImg.setAttribute("src", "./img/package-1.png");
-      bodyProductAdMainprice.textContent = "49,95 €";
-      gummiesProductTitle.textContent = "Für Einsteiger";
-      gummiesProductQunatity.textContent = "1 Packung";
-      gummiesProductDescription.textContent = "Mit einer einmonatigen Anwendung können Sie kleine Fettpölsterchen los werden.";
-      bodyProductAd.textContent = "Gesamtpreis 54,90 €";
-    }
-
-    if (weightDifferencesSpan.innerText >= 8) {
-      gummiesProductImg.setAttribute("src", "./img/package-2.png");
-      bodyProductAdMainprice.textContent = "39,97 €";
-      gummiesProductTitle.textContent = "Verkaufshit";
-      gummiesProductQunatity.textContent = "2 Packungen";
-      gummiesProductDescription.textContent = 'Dieses Paket wird von vielen auch "das neue Kleiderschrank- Paket" gennant, denn viele Anwender(innen) passen nach der erfolgreichen Einnahme nicht mehr in ihre alten Klamotten und müssen zu kleineren Größen greifen.';
-      bodyProductAd.textContent = "Gesamtpreis 79,95 €";
-    }
-
-    if (weightDifferencesSpan.innerText > 12) {
-      gummiesProductImg.setAttribute("src", "./img/package-3.png");
-      bodyProductAdMainprice.textContent = "36,65 €";
-      gummiesProductTitle.textContent = "Großer Wert";
-      gummiesProductQunatity.textContent = "3 Packungen";
-      gummiesProductDescription.textContent = "Dieses Paket ist nur für Anwender(innen) gedacht, die wirklich ihr Leben verändern möchten.";
-      bodyProductAd.textContent = "Gesamtpreis 109,95 €";
-    }
-  });
-}
+const checkBoxesMotivated = document.querySelectorAll(".motivated-btns");
+const motivatedError = document.querySelector("#motivated-error");
+const checkBoxesSports = document.querySelectorAll(".sports-btns");
+const sportError = document.querySelector("#sport-error");
 
 // Handle form submission
 const currentWeightError = document.querySelector("#current-weight-error");
 const targetWeightError = document.querySelector("#target-weight-error");
 const heightError = document.querySelector("#height-error");
 const ageError = document.querySelector("#age-error");
+
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -210,28 +175,28 @@ function handleSubmit(event) {
 
   if (!age) {
     hasErrors = true;
-    ageError.style.display = "block";
+    ageError.style.display = "flex";
   } else {
     ageError.style.display = "none";
   }
 
   if (!height || height <= 0) {
     hasErrors = true;
-    heightError.style.display = "block";
+    heightError.style.display = "flex";
   } else {
     heightError.style.display = "none";
   }
 
   if (!targetWeight || targetWeight <= 0) {
     hasErrors = true;
-    targetWeightError.style.display = "block";
+    targetWeightError.style.display = "flex";
   } else {
     targetWeightError.style.display = "none";
   }
 
   if (!currentWeight || currentWeight <= 0) {
     hasErrors = true;
-    currentWeightError.style.display = "block";
+    currentWeightError.style.display = "flex";
   } else {
     currentWeightError.style.display = "none";
   }
@@ -248,6 +213,86 @@ function handleSubmit(event) {
     formChooseCotainer.style.display = "block";
     formDataPagination.style.display = "none";
     formChoosePagination.style.display = "flex";
+
+    if (formChooseSubmitBtn) {
+      formChooseSubmitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        let atLeastOneMotivatedChecked = false;
+        let atLeastOneSportsChecked = false;
+        let bothChecked = false;
+
+        for (let i = 0; i < checkBoxesMotivated.length; i++) {
+          if (checkBoxesMotivated[i].checked) {
+            atLeastOneMotivatedChecked = true;
+            break;
+          }
+        }
+
+        for (let i = 0; i < checkBoxesSports.length; i++) {
+          if (checkBoxesSports[i].checked) {
+            atLeastOneSportsChecked = true;
+            break;
+          }
+        }
+
+        if (!atLeastOneMotivatedChecked && !atLeastOneSportsChecked) {
+          hasErrors = true;
+          motivatedError.style.display = "flex";
+          sportError.style.display = "flex";
+        } else if (!atLeastOneMotivatedChecked) {
+          hasErrors = true;
+          motivatedError.style.display = "flex";
+          sportError.style.display = "none";
+        } else if (!atLeastOneSportsChecked) {
+          hasErrors = true;
+          motivatedError.style.display = "none";
+          sportError.style.display = "flex";
+        } else {
+          bothChecked = true;
+          motivatedError.style.display = "none";
+          sportError.style.display = "none";
+        }
+
+        if (bothChecked) {
+          loader.style.display = "block";
+          mainContainer.style.display = "none";
+
+          setTimeout(() => {
+            loader.style.display = "none";
+            result.style.display = "block";
+            initResultSection();
+          }, 3000);
+        }
+
+        if (weightDifferencesSpan.innerText < 8) {
+          gummiesProductImg.setAttribute("src", "./img/package-1.png");
+          bodyProductAdMainprice.textContent = "49,95 €";
+          gummiesProductTitle.textContent = "Für Einsteiger";
+          gummiesProductQunatity.textContent = "1 Packung";
+          gummiesProductDescription.textContent = "Mit einer einmonatigen Anwendung können Sie kleine Fettpölsterchen los werden.";
+          bodyProductAd.textContent = "Gesamtpreis 54,90 €";
+        }
+
+        if (weightDifferencesSpan.innerText >= 8) {
+          gummiesProductImg.setAttribute("src", "./img/package-2.png");
+          bodyProductAdMainprice.textContent = "39,97 €";
+          gummiesProductTitle.textContent = "Verkaufshit";
+          gummiesProductQunatity.textContent = "2 Packungen";
+          gummiesProductDescription.textContent = 'Dieses Paket wird von vielen auch "das neue Kleiderschrank- Paket" gennant, denn viele Anwender(innen) passen nach der erfolgreichen Einnahme nicht mehr in ihre alten Klamotten und müssen zu kleineren Größen greifen.';
+          bodyProductAd.textContent = "Gesamtpreis 79,95 €";
+        }
+
+        if (weightDifferencesSpan.innerText > 12) {
+          gummiesProductImg.setAttribute("src", "./img/package-3.png");
+          bodyProductAdMainprice.textContent = "36,65 €";
+          gummiesProductTitle.textContent = "Großer Wert";
+          gummiesProductQunatity.textContent = "3 Packungen";
+          gummiesProductDescription.textContent = "Dieses Paket ist nur für Anwender(innen) gedacht, die wirklich ihr Leben verändern möchten.";
+          bodyProductAd.textContent = "Gesamtpreis 109,95 €";
+        }
+      });
+    }
   }
 }
 

@@ -132,6 +132,10 @@ if (femaleCheckbox) {
   });
 }
 
+formSubmitBtn.addEventListener("click", function () {
+  window.scrollTo(0, 0); // scroll to top of page
+});
+
 // Initialize result section
 function initResultSection() {
   resultSection.style.display = "block";

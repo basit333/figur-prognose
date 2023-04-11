@@ -154,6 +154,33 @@ function initResultSection() {
 
   targetDateInChart.textContent = targetDate.format("DD MMMM YYYY");
   currentDateInChart.textContent = currentDate.format("DD MMMM YYYY");
+
+  if (weightDifferencesSpan.innerText < 8) {
+    gummiesProductImg.setAttribute("src", "./img/package-1.png");
+    bodyProductAdMainprice.textContent = "49,95 €";
+    gummiesProductTitle.textContent = "Für Einsteiger";
+    gummiesProductQunatity.textContent = "1 Packung";
+    gummiesProductDescription.textContent = "Mit einer einmonatigen Anwendung können Sie kleine Fettpölsterchen los werden.";
+    bodyProductAd.textContent = "Gesamtpreis 54,90 €";
+  }
+
+  if (weightDifferencesSpan.innerText >= 8) {
+    gummiesProductImg.setAttribute("src", "./img/package-2.png");
+    bodyProductAdMainprice.textContent = "39,97 €";
+    gummiesProductTitle.textContent = "Verkaufshit";
+    gummiesProductQunatity.textContent = "2 Packungen";
+    gummiesProductDescription.textContent = 'Dieses Paket wird von vielen auch "das neue Kleiderschrank- Paket" gennant, denn viele Anwender(innen) passen nach der erfolgreichen Einnahme nicht mehr in ihre alten Klamotten und müssen zu kleineren Größen greifen.';
+    bodyProductAd.textContent = "Gesamtpreis 79,95 €";
+  }
+
+  if (weightDifferencesSpan.innerText > 12) {
+    gummiesProductImg.setAttribute("src", "./img/package-3.png");
+    bodyProductAdMainprice.textContent = "36,65 €";
+    gummiesProductTitle.textContent = "Großer Wert";
+    gummiesProductQunatity.textContent = "3 Packungen";
+    gummiesProductDescription.textContent = "Dieses Paket ist nur für Anwender(innen) gedacht, die wirklich ihr Leben verändern möchten.";
+    bodyProductAd.textContent = "Gesamtpreis 109,95 €";
+  }
 }
 
 const checkBoxesMotivated = document.querySelectorAll(".motivated-btns");
@@ -267,33 +294,6 @@ function handleSubmit(event) {
             result.style.display = "block";
             initResultSection();
           }, 3000);
-        }
-
-        if (weightDifferencesSpan.innerText < 8) {
-          gummiesProductImg.setAttribute("src", "./img/package-1.png");
-          bodyProductAdMainprice.textContent = "49,95 €";
-          gummiesProductTitle.textContent = "Für Einsteiger";
-          gummiesProductQunatity.textContent = "1 Packung";
-          gummiesProductDescription.textContent = "Mit einer einmonatigen Anwendung können Sie kleine Fettpölsterchen los werden.";
-          bodyProductAd.textContent = "Gesamtpreis 54,90 €";
-        }
-
-        if (weightDifferencesSpan.innerText >= 8) {
-          gummiesProductImg.setAttribute("src", "./img/package-2.png");
-          bodyProductAdMainprice.textContent = "39,97 €";
-          gummiesProductTitle.textContent = "Verkaufshit";
-          gummiesProductQunatity.textContent = "2 Packungen";
-          gummiesProductDescription.textContent = 'Dieses Paket wird von vielen auch "das neue Kleiderschrank- Paket" gennant, denn viele Anwender(innen) passen nach der erfolgreichen Einnahme nicht mehr in ihre alten Klamotten und müssen zu kleineren Größen greifen.';
-          bodyProductAd.textContent = "Gesamtpreis 79,95 €";
-        }
-
-        if (weightDifferencesSpan.innerText > 12) {
-          gummiesProductImg.setAttribute("src", "./img/package-3.png");
-          bodyProductAdMainprice.textContent = "36,65 €";
-          gummiesProductTitle.textContent = "Großer Wert";
-          gummiesProductQunatity.textContent = "3 Packungen";
-          gummiesProductDescription.textContent = "Dieses Paket ist nur für Anwender(innen) gedacht, die wirklich ihr Leben verändern möchten.";
-          bodyProductAd.textContent = "Gesamtpreis 109,95 €";
         }
       });
     }

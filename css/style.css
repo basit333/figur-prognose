@@ -282,6 +282,9 @@ body {
   border: 1px solid #e2e8f0;
   transition: all 0.1s ease-in-out;
   appearance: none;
+  /* use -moz-appearance for Firefox */
+  -moz-appearance: none;
+  -webkit-appearance: none;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   max-width: 138px;
@@ -295,7 +298,11 @@ body {
 
 .form--input-box input::-webkit-outer-spin-button,
 .form--input-box input::-webkit-inner-spin-button {
+  appearance: none;
+  /* use -moz-appearance for Firefox */
+  -moz-appearance: none;
   -webkit-appearance: none;
+  margin: 0;
 }
 
 .form--input-span {

@@ -146,11 +146,13 @@ formSubmitBtn.addEventListener("click", function () {
       // section is fully or half visible
       window.scrollTo({
         top: scrollPosition,
+        behavior: "smooth",
       });
     } else {
       // section is not visible or only partially visible
       window.scrollTo({
         top: scrollPosition,
+        behavior: "smooth",
       });
     }
   }

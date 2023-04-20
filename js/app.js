@@ -57,6 +57,7 @@ const gummiesProductQunatity = document.querySelector("#gummies-product-qunatity
 const gummiesProductDescription = document.querySelector("#gummies-product-description");
 const bodyProductAd = document.querySelector(".body__product-ad-p");
 const loader = document.querySelector(".loader");
+const formChooseSection = document.getElementById("form-choose-section");
 
 if (checkboxes) {
   checkboxes.forEach((checkbox) => {
@@ -133,7 +134,17 @@ if (femaleCheckbox) {
 }
 
 formSubmitBtn.addEventListener("click", function () {
-  window.scrollTo(0, 0); // scroll to top of page
+  // window.scrollTo(0, 0); // scroll to top of page
+  formChooseSection.classList.toggle("visible");
+
+  if (formChooseSection.classList.contains("visible")) {
+    const form2Top = formChooseSection.getBoundingClientRect().top + window.pageYOffset;
+    const scrollPosition = form2Top - 50;
+    window.scrollTo({
+      top: scrollPosition,
+      // behavior: "smooth",
+    });
+  }
 });
 
 // Initialize result section

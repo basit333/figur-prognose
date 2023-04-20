@@ -134,16 +134,25 @@ if (femaleCheckbox) {
 }
 
 formSubmitBtn.addEventListener("click", function () {
-  // window.scrollTo(0, 0); // scroll to top of page
   formChooseSection.classList.toggle("visible");
 
   if (formChooseSection.classList.contains("visible")) {
-    const form2Top = formChooseSection.getBoundingClientRect().top + window.pageYOffset;
-    const scrollPosition = form2Top - 50;
-    window.scrollTo({
-      top: scrollPosition,
-      // behavior: "smooth",
-    });
+    const sectionTop = formChooseSection.getBoundingClientRect().top + window.pageYOffset;
+    const scrollPosition = sectionTop - 50;
+    const viewportHeight = window.innerHeight;
+    const sectionHeight = formChooseSection.offsetHeight;
+
+    if (sectionTop <= viewportHeight - sectionHeight / 2) {
+      // section is fully or half visible
+      window.scrollTo({
+        top: scrollPosition,
+      });
+    } else {
+      // section is not visible or only partially visible
+      window.scrollTo({
+        top: scrollPosition,
+      });
+    }
   }
 });
 
